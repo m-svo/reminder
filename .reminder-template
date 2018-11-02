@@ -1,0 +1,6 @@
+[smtp]
+server = smtp.example.com
+from = example@email.com
+to = example-to@email.com
+login = example-login@mail.com
+password = examplepassword
