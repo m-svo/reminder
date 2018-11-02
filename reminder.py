@@ -3,33 +3,35 @@
 from datetime import datetime
 import smtplib
 from email.message import EmailMessage
-#import os
 from pathlib import Path
-import sys
 from configparser import ConfigParser
 
-#config_path = os.path.join(os.path.dirname("~/.config/"), ".reminder")
-config_path = "".join(str(Path.home()),".config/python-reminder")
-print (config_path)
+join_paths = (str(Path("..")),"/.config/python-reminder")
+join_paths_list = (str(Path("..")),"/list.markdown")
+config_path = "".join(join_paths)
+list_path = "".join(join_paths_list)
+config = ConfigParser()
+config.read(config_path)
 
 today = datetime.strftime(datetime.today(), "%d.%m")
-print ("Today is", today)
+
 def get_tasks():
-    f = open("list.markdown","r")
+    f = open(list_path,"r")
     tasks = list()
     for row in f:
         if row[0:5]==today:
             tasks.append(row)
     return tasks
-print (get_tasks())
+get_tasks()
 
-host = "smtp"
+host = config.get("smtp", "server")
+port = config.get("smtp", "port")
 subject = "Your personal reminder for %s" % today
-address = "user"
-sender = "sender_mail"
-text = "Python 3.7 rules them all!"
+address = config.get("smtp", "to")
+sender = config.get("smtp", "from")
+text = "".join(get_tasks())
 
-body = "\r\n".join((
+body = "\n".join((
     "From: %s" % sender,
     "To: %s" % address,
     "Subject: %s" % subject ,
@@ -37,11 +39,16 @@ body = "\r\n".join((
     text
 ))
 
-#server = smtplib.SMTP(host)
-#server.connect(host,587)
-#server.ehlo()
-#server.starttls()
-#server.ehlo()
-#server.login(login, password)
-#server.sendmail(sender, [address], body)
-#server.quit()
+date_now = datetime.now()
+
+server = smtplib.SMTP(host)
+server.connect(host,port)
+server.ehlo()
+server.starttls()
+server.ehlo()
+server.login(config.get("smtp","login"),config.get("smtp","password"))
+server.sendmail(sender, [address], body)
+server.quit()
+
+log=open("/var/log/python_reminder/log","a")
+log.write("Reminder executed on %s \n" % date_now)
