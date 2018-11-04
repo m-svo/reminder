@@ -7,8 +7,8 @@ from email.message import EmailMessage
 from pathlib import Path
 from configparser import ConfigParser
 
-join_paths = (str(Path.cwd()),"/config")
-join_paths_list = (str(Path.cwd()),"/list.markdown")
+join_paths = (str(Path(__file__).parent),"/config")
+join_paths_list = (str(Path(__file__).parent),"/list.markdown")
 config_path = "".join(join_paths)
 list_path = "".join(join_paths_list)
 config = ConfigParser()
