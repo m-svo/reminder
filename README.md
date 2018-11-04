@@ -15,8 +15,12 @@ This software stores your email login and password in plain text in home folder.
 # installation  
 ```
 git clone https://github.com/m-svo/reminder.git
-cd reminders
+cd reminder
 chmod +x setup.sh
 ./setup.sh
+```  
+- do not forget to setup a cron job. `reminder.py` can be executed directly, no need to specify `python3` executable if Python 3 is correctly installed. Example:  
 ```
-- do not forget to setup a cron job. `reminder.py` can be executed directly, no need to specify `python3` executable if Python 3 is correctly installed.
+0 7 * * * <your-path-to-script>/reminder/reminder.py 1> /dev/null 2> /var/log/python_reminder/log
+```  
+This will execute every day at 7:00 AM and will write errors, if any, to `/var/log/python_reminder/log`
