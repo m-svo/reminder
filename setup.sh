@@ -32,4 +32,4 @@ sed -i -e 's/examplepassword/'"$smtp_password"'/' config
 echo "You may be prompted for sudo password to set up logging to /var/log/python_reminder"
 sudo mkdir /var/log/python_reminder
 sudo touch /var/log/python_reminder/log
-echo "Setup finished. You should set up cronjob for 'reminder.py'."
+echo "Setup finished. You should set up cron job for 'reminder.py'."

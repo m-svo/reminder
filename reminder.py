@@ -4,20 +4,20 @@
 from datetime import datetime
 import smtplib
 from email.message import EmailMessage
-#from pathlib import Path
+from pathlib import Path
 from configparser import ConfigParser
 
-#join_paths = (str(Path("..")),"/.config/python-reminder")
-#join_paths_list = (str(Path("..")),"/list.markdown")
-#config_path = "".join(join_paths)
-#list_path = "".join(join_paths_list)
+join_paths = (str(Path.cwd()),"/config")
+join_paths_list = (str(Path.cwd()),"/list.markdown")
+config_path = "".join(join_paths)
+list_path = "".join(join_paths_list)
 config = ConfigParser()
-config.read("./config")
+config.read(config_path)
 
 today = datetime.strftime(datetime.today(), "%d.%m")
 
 def get_tasks():
-    f = open("./list.markdown","r")
+    f = open(list_path,"r")
     tasks = list()
     for row in f:
         if row[0:5]==today:
@@ -26,6 +26,7 @@ def get_tasks():
 get_tasks()
 
 date_now = datetime.now()
+
 
 if get_tasks():
     log_text = "Tasks sent."
