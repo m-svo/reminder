@@ -9,7 +9,7 @@ read symlink
 if [[ $symlink == "Y" ]] || [[ $symlink == "y" ]]
 then
   echo "Making symlink"
-  ln -s link.markdown ~/link.markdown
+  ln -s $PWD/list.markdown ~/list.markdown
 fi
 echo "Input SMTP server:"
 read smtp_server
