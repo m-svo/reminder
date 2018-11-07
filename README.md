@@ -21,6 +21,6 @@ chmod +x setup.sh
 ```  
 - do not forget to setup a cron job. `reminder.py` can be executed directly, no need to specify `python3` executable if Python 3 is correctly installed. Example:  
 ```
-0 7 * * * <your-path-to-script>/reminder/reminder.py 1> /dev/null 2> /var/log/python_reminder/log
+0 7 * * * <your-path-to-script>/reminder/reminder.py 1> /dev/null 2>> /var/log/python_reminder/log
 ```  
-This will execute every day at 7:00 AM and will write errors, if any, to `/var/log/python_reminder/log`
+This will execute every day at 7:00 AM and append errors, if any, to `/var/log/python_reminder/log`

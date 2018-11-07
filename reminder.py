@@ -51,7 +51,7 @@ if get_tasks():
     server.starttls()
     server.ehlo()
     server.login(config.get("smtp","login"),config.get("smtp","password"))
-    server.sendmail(sender, [address], body)
+    server.sendmail(sender, [address], body.encode("utf-8"))
     server.quit()
 else:
     log_text = "No tasks found."
