@@ -5,6 +5,9 @@ This is a small personal project, so may not work for everyone.
 If there are tasks for today, email is generated and sent.  
 Regardless of the above, log is written to `/var/log/python_reminder/log` every time `reminder.py` has executed successfully.  
 
+### tasks  
+`tasks.py` is a tool, for now it can only print onetime, monthly, yearly reminders to screen. To see usage, run `./tasks.py`  
+
 # prerequisites  
 - Python 3  
 - being okay with some email account login and password being stored in plaintext in $HOME  

@@ -4,6 +4,7 @@ cp config-template config
 cp list-template.markdown list.markdown
 echo "WARNING! This software stores your email login and password in plain text in home folder. Please, do not use an important email account."
 chmod +x reminder.py
+chmod +x tasks.py
 echo "Would you like a simlink to list.markdown in HOME? Y/N"
 read symlink
 if [[ $symlink == "Y" ]] || [[ $symlink == "y" ]]
