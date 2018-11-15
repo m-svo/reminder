@@ -15,13 +15,16 @@ config = ConfigParser()
 config.read(config_path)
 
 today = datetime.strftime(datetime.today(), "%d.%m")
+day = datetime.strftime(datetime.today(), "%d")
 
 def get_tasks():
     f = open(list_path,"r")
     tasks = list()
     for row in f:
         if row[0:5]==today:
-            tasks.append(row)
+            tasks.append(row) # append onetime and yearly tasks
+        if row[0:5]==day+".XX":
+            tasks.append(row) # append monthly tasks
     return tasks
 get_tasks()
 

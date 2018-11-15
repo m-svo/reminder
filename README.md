@@ -1,7 +1,7 @@
 # reminder  
 Email reminder in Python to execute as cron job  
 This is a small personal project, so may not work for everyone.  
-`reminder.py` reads tasks from `list.markdown` by `date.month` only, so it is best used for recurring reminders, like birthdays, taxes, etc.  
+`reminder.py` reads tasks from `list.markdown` by `date.month` or `date` only, so it is best used for recurring reminders, like birthdays, taxes, rent etc.  
 If there are tasks for today, email is generated and sent.  
 Regardless of the above, log is written to `/var/log/python_reminder/log` every time `reminder.py` has executed successfully.  
 
