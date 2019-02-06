@@ -33,4 +33,6 @@ sed -i -e 's/examplepassword/'"$smtp_password"'/' config
 echo "You may be prompted for sudo password to set up logging to /var/log/python_reminder"
 sudo mkdir /var/log/python_reminder
 sudo touch /var/log/python_reminder/log
+sudo chown $USER:$USER /var/log/python_reminder/log
+echo "Log file is now owned by you. Cron job can be set for user, not root."
 echo "Setup finished. You should set up cron job for 'reminder.py'."

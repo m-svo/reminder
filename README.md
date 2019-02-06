@@ -27,3 +27,4 @@ chmod +x setup.sh
 0 7 * * * <your-path-to-script>/reminder/reminder.py 1> /dev/null 2>> /var/log/python_reminder/log
 ```  
 This will execute every day at 7:00 AM and append errors, if any, to `/var/log/python_reminder/log`
+No need to set cron job as root, log file will be owned by `$USER`
