@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cp config-template config
 cp list-template.markdown list.markdown
