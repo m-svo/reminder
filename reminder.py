@@ -16,6 +16,7 @@ config.read(config_path)
 
 today = datetime.strftime(datetime.today(), "%d.%m")
 day = datetime.strftime(datetime.today(), "%d")
+weekday = "day "+str(datetime.today().isoweekday())
 
 def get_tasks():
     f = open(list_path,"r")
@@ -25,6 +26,8 @@ def get_tasks():
             tasks.append(row) # append onetime and yearly tasks
         if row[0:5]==day+".XX":
             tasks.append(row) # append monthly tasks
+        if row[0:5]==weekday:
+            tasks.append(row) # append weekly tasks
     return tasks
 get_tasks()
 
