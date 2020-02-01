@@ -54,9 +54,7 @@ if get_tasks():
         text
     ))
 
-    server = smtplib.SMTP(host)
-    server.connect(host, port)
-    server.ehlo()
+    server = smtplib.SMTP(host, port)
     server.starttls()
     server.ehlo()
     server.login(config.get("smtp", "login"), config.get("smtp", "password"))
