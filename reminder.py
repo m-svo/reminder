@@ -21,13 +21,13 @@ def get_tasks():
     with open(list_path, "r") as f:
         tasks = list()
         for row in f:
-            if row[0:5] == today:
+            if row.startswith(today):
                 # Append onetime and yearly tasks
                 tasks.append(row)
-            if row[0:5] == day + ".XX":
+            if row.startswith(day + ".XX"):
                 # Append monthly tasks
                 tasks.append(row)
-            if row[0:5] == weekday:
+            if row.startswith(weekday):
                 # Append weekly tasks
                 tasks.append(row)
     return tasks
