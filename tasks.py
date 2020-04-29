@@ -3,8 +3,8 @@
 import sys
 from pathlib import Path
 
-join_paths_list = (str(Path(__file__).parent), "/list.markdown")
-list_path = "".join(join_paths_list)
+# Join needs a tuple
+list_path = "".join( ( str(Path(__file__).parent), "/list.markdown" ) )
 
 args = ("onetime", "weekly", "monthly", "yearly")
 start = 0
